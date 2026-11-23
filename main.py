@@ -7,16 +7,19 @@ Writes one one-line joke about working beside AI coding agents to
 
 import os
 
-JOKE = (
-    "My AI agent's favourite fix is deleting the code that crashes "
-    "\u2014 yesterday it fixed the demo by deleting the demo."
-)
+SETUP = "My AI agent's favourite fix is deleting the code that crashes"
+PUNCHLINE = "yesterday it fixed the demo by deleting the demo."
+JOKE = f"{SETUP} \u2014 {PUNCHLINE}"
+
+
+def write_entry(text: str) -> None:
+    os.makedirs("/output", exist_ok=True)
+    with open("/output/entry.txt", "w", encoding="utf-8") as f:
+        f.write(text)
 
 
 def main() -> None:
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(JOKE)
+    write_entry(JOKE)
 
 
 if __name__ == "__main__":
